@@ -1,0 +1,66 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.3/dist/cdn.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        [x-cloak]{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mx-auto mt-6 max-w-sm">
+
+
+        <h1 class="text-5xl mb-4">Alpine js Demo</h1>
+        <!-- x-data aline component -->
+        <div x-data="{
+            open: false,
+            name: 'Brad',
+            search: '123'
+        }">
+            <!-- x-on & x-bind -->
+            <button 
+                x-on:click="open = !open"
+                :class="open ? 'bg-slate-800': 'bg-slate-700'"
+                class="text-white rounded-xl py-2 px-4"
+            >
+                Toggle
+            </button>
+            <!-- x-show -->
+            <div x-show="open" x-transition x-cloak>
+                <p class="bg-gray-200 p-4 my-6 rounded">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium asperiores officia dolorum id quod, inventore repellendus quas modi quasi blanditiis corrupti et beatae? Molestiae illum veniam recusandae ad tenetur ipsam.
+                </p>
+
+            </div>
+            <!-- x-text -->
+            <div class="my-4">
+                The value of name is <span class="font-bold" x-text="name"></span>
+            </div>
+
+            <!-- x-effect -->
+            <div x-effect="console.log('open value is', open)"></div>
+
+            <!-- x-model -->
+            <input 
+                x-model="search"
+                type="text" 
+                class="border p-2 w-full mb-2 mt-6" 
+                placeholder="Search for something"
+            >
+            <p>
+                <span class="font-bold">
+                    searhing for:
+                </span>
+                <span x-text="search"></span>
+            </p>
+        </div>
+    </div>  
+
+    <script src="./script.js"></script>
+</body>
+</html>
